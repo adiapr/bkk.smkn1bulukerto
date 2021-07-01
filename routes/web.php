@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('/admin', 'halamanController@index');
 Route::get('/admin/slider', 'halamanController@indexSlider')->name('admin.slider');
 Route::post('/admin/slider/add', 'halamanController@addSlider')->name('admin.slider.add');
+Route::post('/admin/slider/delete/{id}', 'halamanController@deleteSlider')->name('slider.delete');

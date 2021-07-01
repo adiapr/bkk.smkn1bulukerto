@@ -28,7 +28,6 @@ class halamanController extends Controller
         ]);
         $slider = new Slider;
         $slider->nama           = $request->nama;
-        // $slider->slider_seo     = $request->Str::slug($request->nama);
         $slider->judul          = $request->judul;
         $slider->tagline        = $request->tagline;
         // add image
@@ -40,5 +39,14 @@ class halamanController extends Controller
         $slider->save();
         // redirect
         return redirect('/admin/slider')->with('berhasil','Gambar slider berhasil ditambahkan');
+    }
+
+    public function deleteSlider($id){
+        $slider = Slider::find($id);
+        $namafile = $slider->gambar;
+        File::delete('images/slider/'.$namafile);
+        $slider->delete();
+
+        return redirect('/admin/slider')->with('hapus','Gambar berhasil dihapus');
     }
 }

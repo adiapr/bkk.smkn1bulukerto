@@ -85,7 +85,13 @@
                                 <td>{{ $isi->judul }}</td>
                                 <td>{{ $isi->tagline }}</td>
                                 <td><img src="{{ asset('images/slider/'.$isi->gambar) }}" height="50"></td>
-                                <td>$320,800</td>
+                                <td>
+                                    <form action="{{ route('slider.delete', $isi->id) }}" method="post">
+                                    @csrf
+                                        <a href="" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                        <button onclick="return confirm('Hapus data ?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
