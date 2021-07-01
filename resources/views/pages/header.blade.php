@@ -20,11 +20,10 @@
                     <ul class="nav">
 
                         <li class="active"> <a href="#home">Home</a> </li>
-
-                        <li> <a href="#about">About</a> </li>
-
-                        <li> <a href="#history">History</a> </li>
-
+                        <li> <a href="#clients">Kerjasama</a> </li>
+                        <li> <a href="#why-choose">Lowongan</a> </li>
+                        <li> <a href="#berita">Berita</a> </li>
+                        <li> <a href="#about">Tentang</a> </li>
                         <li><a href="login" style="color:yellow">Login</a></li>
 
                     </ul>

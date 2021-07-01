@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Lamoda Free Responsive Template | Template Stock</title>
+<title>BKK | SMKN 1 Bulukerto</title>
 <meta name="author" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">

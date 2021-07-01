@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Slider;
 use File;
+use Auth;
 
 class halamanController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('admin');
+    }
+
     public function index(){
         return view('admin.tables');
     }

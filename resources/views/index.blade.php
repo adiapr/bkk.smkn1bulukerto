@@ -29,50 +29,22 @@
 
         <!-- Start Slider  -->
         <section id="home" class="home">
-             <div class="slider-overlay"></div>
+        <div class="slider-overlay"></div>
             <div class="flexslider">
                 <ul class="slides scroll">
+                    @foreach ($slider as $slide)
+                    {{-- content slide --}}
                     <li class="first">
                         <div class="slider-text-wrapper">
                             <div class="container">
-                                <div class="big">Free Responsive Template </div>
-                                <div class="small">Are you ready to buy this theme</div>
-                                {{-- <a href="#works" class="middle btn btn-white">VIEW PORTFOLIO</a> --}}
+                                <div class="big">{{ $slide->judul }} </div>
+                                <div class="small">{{ $slide->tagline }}</div>
                             </div>
                         </div>
-                        <img src="images/slider/1.jpg" alt="">
+                        <img src="images/slider/{{ $slide->gambar }}" alt="{{ $slide->nama }}">
                     </li>
-                    <li class="first">
-                        <div class="slider-text-wrapper">
-                            <div class="container">
-                                <div class="big">Free Responsive Template </div>
-                                <div class="small">Are you ready to buy this theme</div>
-                                {{-- <a href="#works" class="middle btn btn-white">VIEW PORTFOLIO</a> --}}
-                            </div>
-                        </div>
-                        <img src="images/slider/1.jpg" alt="">
-                    </li>
-                    <li class="secondary">
-                        <div class="slider-text-wrapper">
-                            <div class="container">
-                                <div class="big">Free Responsive Template </div>
-                                <div class="small">Are you ready to buy this theme</div>
-                                <a href="#works" class=" middle btn btn-white">VIEW PORTFOLIO</a>
-                            </div>
-                         </div>
-                        <img src="images/slider/2.jpg" alt="">
-                    </li>
-
-                    <li class="third">
-                        <div class="slider-text-wrapper">
-                            <div class="container">
-                                <div class="big">Free Responsive Template </div>
-                                <div class="small">Are you ready to buy this theme</div>
-                                <a href="#works" class="middle btn btn-white">VIEW PORTFOLIO</a>
-                             </div>
-                        </div>
-                        <img src="images/slider/3.jpg" alt="">
-                    </li>
+                    {{-- /content slide --}}
+                    @endforeach
                 </ul>
             </div>
         </section>
@@ -589,7 +561,7 @@ viverra purus tristique.</p>
 </section>
 
   <!--Start Why Choose us-->
-<section id="why-choose" class="section">
+<section id="berita" class="section">
     <div class="container">
         <div class="row">
 
