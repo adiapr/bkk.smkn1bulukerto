@@ -255,101 +255,16 @@
                     <h4 class="text-section">Setting Halaman</h4>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="collapse" href="#base">
+                    <a href="{{ route('admin.slider') }}">
                         <i class="fas fa-layer-group"></i>
-                        <p>Base</p>
-                        <span class="caret"></span>
+                        <p>Slider Image</p>
                     </a>
-                    <div class="collapse" id="base">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="../components/avatars.html">
-                                    <span class="sub-item">Avatars</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/buttons.html">
-                                    <span class="sub-item">Buttons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/gridsystem.html">
-                                    <span class="sub-item">Grid System</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/panels.html">
-                                    <span class="sub-item">Panels</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/notifications.html">
-                                    <span class="sub-item">Notifications</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/sweetalert.html">
-                                    <span class="sub-item">Sweet Alert</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/font-awesome-icons.html">
-                                    <span class="sub-item">Font Awesome Icons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/simple-line-icons.html">
-                                    <span class="sub-item">Simple Line Icons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/flaticons.html">
-                                    <span class="sub-item">Flaticons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../components/typography.html">
-                                    <span class="sub-item">Typography</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="collapse" href="#sidebarLayouts">
+                    <a href="">
                         <i class="fas fa-th-list"></i>
                         <p>Sidebar Layouts</p>
-                        <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="sidebarLayouts">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="../sidebar-style-1.html">
-                                    <span class="sub-item">Sidebar Style 1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../overlay-sidebar.html">
-                                    <span class="sub-item">Overlay Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../compact-sidebar.html">
-                                    <span class="sub-item">Compact Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../static-sidebar.html">
-                                    <span class="sub-item">Static Sidebar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../icon-menu.html">
-                                    <span class="sub-item">Icon Menu</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </div>

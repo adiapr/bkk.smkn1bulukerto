@@ -63,18 +63,3 @@
 	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script>
-		$(document).on('click','.open_modal',function(){
-        var url = "domain.com/yoururl";
-        var tour_id= $(this).val();
-        $.get(url + '/' + tour_id, function (data) {
-            //success data
-            console.log(data);
-            $('#tour_id').val(data.id);
-            $('#name').val(data.name);
-            $('#details').val(data.details);
-            $('#btn-save').val("update");
-            $('#myModal').modal('show');
-        }) 
-    });
-	</script>
