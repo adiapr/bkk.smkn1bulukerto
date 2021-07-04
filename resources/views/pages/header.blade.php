@@ -10,7 +10,7 @@
                 </button>
                 <!--Start Logo -->
                 <div class="logo-nav">
-                    <a href="index.html">
+                    <a href="{{ route('admin') }}">
                         <img src="images/logo.png" height="50" alt="Company logo" />
                     </a>
                 </div>

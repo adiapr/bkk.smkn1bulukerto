@@ -9,8 +9,10 @@
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
-                            Hizrian
-                            <span class="user-level">Administrator</span>
+                            {{-- memunculkan data user --}}
+                            {{ Auth::user()->name }}
+                            <span class="user-level">{{ Auth::user()->level}}</span>
+                            {{-- ------------------------------ --}}
                             <span class="caret"></span>
                         </span>
                     </a>
@@ -39,25 +41,10 @@
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item">
-                    <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                    <a href="{{ route('home') }}" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
-                        <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="dashboard">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="../../demo1/index.html">
-                                    <span class="sub-item">Dashboard 1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../../demo2/index.html">
-                                    <span class="sub-item">Dashboard 2</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
@@ -181,24 +168,31 @@
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#tables">
                         <i class="fas fa-users"></i>
-                        <p>Anggota</p>
+                        <p>Data Siswa</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="">
-                                    <span class="sub-item">Siswa</span>
+                                <a href="{{ route('admin.siswa') }}?jurusan=tkr">
+                                    <span class="sub-item">TKR</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    <span class="sub-item">Guru</span>
+                                <a href="{{ route('admin.siswa') }}?jurusan=rpl">
+                                    <span class="sub-item">RPL</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.siswa') }}?jurusan=akuntansi">
+                                    <span class="sub-item">Akuntansi</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
+                {{-- hanya admin yang dapat melihat --}}
+                @if (Auth::check() && Auth::user()->level == 'admin')
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#maps">
                         <i class="fas fa-university"></i>
@@ -220,6 +214,8 @@
                         </ul>
                     </div>
                 </li>
+                @endif
+                {{-- ----------------------------------------------- --}}
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#charts">
                         <i class="far fa-chart-bar"></i>
@@ -248,6 +244,7 @@
                         <span class="badge badge-success">4</span>
                     </a>
                 </li>
+                @if (Auth::check() && Auth::user()->level == 'admin')
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
@@ -266,6 +263,7 @@
                         <p>Sidebar Layouts</p>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>
