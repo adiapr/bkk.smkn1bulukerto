@@ -174,17 +174,17 @@
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{ route('admin.siswa') }}?jurusan=tkr">
+                                <a href="{{ route('admin.siswa-tkr') }}">
                                     <span class="sub-item">TKR</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.siswa') }}?jurusan=rpl">
+                                <a href="">
                                     <span class="sub-item">RPL</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.siswa') }}?jurusan=akuntansi">
+                                <a href="">
                                     <span class="sub-item">Akuntansi</span>
                                 </a>
                             </li>

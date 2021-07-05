@@ -62,5 +62,14 @@
 			});
 		});
 	</script>
-	{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> --}}
+	{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> --}}
+	{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> --}}
+
+    {{-- datepicker --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.id.min.js" integrity="sha512-zHDWtKP91CHnvBDpPpfLo9UsuMa02/WgXDYcnFp5DFs8lQvhCe2tx56h2l7SqKs/+yQCx4W++hZ/ABg8t3KH/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        $('.date').datepicker({
+            format: 'yyyy   /mm/dd',
+            autoclose: 'true'
+        })
+    </script>

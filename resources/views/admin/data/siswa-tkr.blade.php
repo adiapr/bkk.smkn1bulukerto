@@ -1,56 +1,20 @@
 @extends('admin.pages.master')
 
 @section('page-title')
-    Halaman Slider
+    Siswa TKR
 @endsection
 
 @section('arrow1')
-    Setting
+    Data Siswa
 @endsection
 
 @section('content')
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title" style="float: left">Slider</h4>
-                {{-- show modal --}}
-                <button class="btn btn-primary btn-sm" style="float: right" data-toggle="modal" data-target="#myModal">Tambah Gambar</button>
-                {{-- content modal --}}
-                <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        <form action="{{ route('admin.slider.add') }}" enctype="multipart/form-data" method="post">
-                            @csrf
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Tambah Slider</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="Nama">Nama</label>
-                                        <input type="text" class="form-control form-control-sm" name="nama" placeholder="Muncul sebagai alt image" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Nama">Judul</label>
-                                        <input type="text" class="form-control form-control-sm" name="judul" placeholder="Masukkan judul (Baris 1)" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Nama">Tagline</label>
-                                        <input type="text" class="form-control form-control-sm" name="tagline" placeholder="Masukkan tagline (baris 2)" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Nama">Gambar Slide</label>
-                                        <input type="file" class="form-control form-control-sm" name="gambar" placeholder="Masukkan tagline (baris 2)" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-default btn-sm" data-dismiss="modal">Batal</button>
-                                    <button class="btn btn-primary btn-sm">Simpan</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <h4 class="card-title" style="float: left">Tambah Siswa</h4>
             </div>
             <div class="card-body">
                 <div>
@@ -59,7 +23,81 @@
                         <div class="alert alert-success" style="color:green">
                             {{ Session::get('berhasil') }}
                         </div>
-                    @elseif(Session::has('hapus'))
+                    @endif
+
+                    {{-- menampilkan error --}}
+                    @if (count($errors) > 0)
+                        <ul class="alert alert-danger" style="list-style: none">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+                <form action="{{ route('admin.siswa-tkr.add') }}" method="POST">
+                @csrf
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="Nama">Nama Siswa</label>
+                                <input type="text" class="form-control form-control-sm" name="nama" placeholder="Masukkan nama siswa" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="NISN">NISN</label>
+                                <input type="number" class="form-control form-control-sm" name="nisn" placeholder="Masukkan dengan benar" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="kelas">Kelas</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text input-group-text-sm" id="basic-addon3">TKR -</span>
+                                    </div>
+                                    <input type="number" name="kelas" class="form-control form-control-sm" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="tgl">Tanggal Lahir</label>
+                                <input type="date" class="form-control form-control-sm" name="tanggal" placeholder="Masukkan dengan benar" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="lulus">Tahun Lulus</label>
+                                <input type="number" class="form-control form-control-sm" name="lulus" placeholder="Masukkan tahun lulus" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="hp">No HP</label>
+                                <input type="number" class="form-control form-control-sm" name="hp" placeholder="Tidak wajib">
+                            </div>
+                        </div>
+                        <div class="col-md-12"><br>
+                            <input type="submit" style="float: right" class="btn btn-primary btn-sm" value="Simpan Data">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title" style="float: left">List siswa TKR</h4>
+            </div>
+            <div class="card-body">
+                <div>
+                    {{-- menampilkam alert --}}
+                    @if(Session::has('hapus'))
                         <div class="alert alert-danger" style="color: red">
                             {{ Session::get('hapus')}}
                         </div>
@@ -70,21 +108,25 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama (Alt)</th>
-                                <th>Judul</th>
-                                <th>Tagline</th>
-                                <th>Gambar</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>NISN</th>
+                                <th>Tanggal Lahir</th>
+                                <th>No. HP</th>
+                                <th>Tahun Lulus</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($slider as $isi) --}}
+                            @foreach ($siswa as $isi)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><img src="" height="50"></td>
+                                <td>{{ ++$no }}</td>
+                                <td>{{ $isi->nama }}</td>
+                                <td>{{ $isi->kelas }}</td>
+                                <td>{{ $isi->nisn }}</td>
+                                <td>{{ $isi->tgl_lahir->format('d/m/Y') }}</td>
+                                <td>{{ $isi->telp }}</td>
+                                <td>{{ $isi->lulusan }}</td>
                                 <td>
                                     {{-- <form action="{{ route('slider.delete') }}" method="post">
                                     @csrf
@@ -93,7 +135,7 @@
                                     </form> --}}
                                 </td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
