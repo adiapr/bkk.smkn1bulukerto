@@ -33,6 +33,7 @@ Route::get('/', function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     //HALAMAN DATA SIWA
-    Route::get('/admin/siswa-TKR', 'SiswaController@siswa')->name('admin.siswa-tkr')->middleware('auth');
+    Route::get('/admin/siswa-TKR', 'SiswaController@siswa_tkr')->name('admin.siswa-tkr')->middleware('auth');
     Route::post('/admin/siswa-tkr/add', 'SiswaController@add_siswa_tkr')->name('admin.siswa-tkr.add')->middleware('auth');
-
+    Route::post('/admin/siswa/delete/{id}', 'SiswaController@deleteSiswa')->name('siswa.delete')->middleware('auth');
+    Route::post('/admin/siswa-TKR/update/{id}', 'SiswaController@updateSiswa')->name('admin.siswa.update')->middleware('auth');

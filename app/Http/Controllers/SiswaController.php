@@ -13,10 +13,31 @@ class SiswaController extends Controller
         $this->middleware('admin');
     }
 
+    // delete (for all siswa)
+    public function deleteSiswa($id){
+        $siswa = Siswa::find($id);
+        $siswa->delete();
+        return redirect('/admin/siswa-TKR')->with('hapus','Data berhasil dihapus');
+    }
+
+    // edit (for all siswa)
+    public function updateSiswa(Request $request, $id){
+        $siswa = Siswa::find($id);
+        $siswa->nama        = $request->nama;
+        $siswa->nisn        = $request->nisn;
+        $siswa->kelas       = $request->kelas;
+        $siswa->tgl_lahir   = $request->tanggal;
+        $siswa->lulusan     = $request->lulus;
+        $siswa->telp        = $request->hp;
+
+        $siswa->update();
+        return redirect('/admin/siswa-TKR')->with('update','Data berhasil diperbaharui');
+    }
+
     // show siswa tkr
-    public function siswa(){
+    public function siswa_tkr(){
         $no = 0;
-        $siswa = Siswa::all();
+        $siswa = Siswa::all()->sortByDesc('id');
         return view('admin.data.siswa-tkr', compact('no','siswa'));
     }
 
@@ -25,9 +46,8 @@ class SiswaController extends Controller
         $this->validate($request,[
             'nama'      => 'required|string',
             'nisn'      => 'required|unique:siswa',
-            'tgl_lahir' => 'required|date',
             'kelas'     => 'required|numeric',
-            'lulus'     => 'required|numeric'
+            'lulus'     => 'required|numeric|max:9999|min:2010'
         ]);
         // panggil tabel siswa
         $siswa = new Siswa;
