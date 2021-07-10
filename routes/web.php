@@ -37,3 +37,8 @@ Route::get('/', function () {
     Route::post('/admin/siswa-tkr/add', 'SiswaController@add_siswa_tkr')->name('admin.siswa-tkr.add')->middleware('auth');
     Route::post('/admin/siswa/delete/{id}', 'SiswaController@deleteSiswa')->name('siswa.delete')->middleware('auth');
     Route::post('/admin/siswa-TKR/update/{id}', 'SiswaController@updateSiswa')->name('admin.siswa.update')->middleware('auth');
+
+    Route::get('/admin/siswa-RPL', 'SiswaController@siswa_rpl')->name('admin.siswa-rpl')->middleware('auth');
+    Route::post('/admin/siswa-rpl/add', 'SiswaController@add_siswa_rpl')->name('admin.siswa-rpl.add')->middleware('auth');
+    Route::post('/admin/siswa-rpl/delete/{id}', 'SiswaController@deleteSiswaRPL')->name('admin.deleteRPL')->middleware('auth');
+    

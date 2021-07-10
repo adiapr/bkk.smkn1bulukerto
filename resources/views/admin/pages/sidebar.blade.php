@@ -179,7 +179,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="{{ route('admin.siswa-rpl') }}">
                                     <span class="sub-item">RPL</span>
                                 </a>
                             </li>

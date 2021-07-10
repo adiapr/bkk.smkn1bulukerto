@@ -1,7 +1,7 @@
 @extends('admin.pages.master')
 
 @section('page-title')
-    Siswa TKR
+    Siswa RPL
 @endsection
 
 @section('arrow1')
@@ -34,7 +34,7 @@
                         </ul>
                     @endif
                 </div>
-                <form action="{{ route('admin.siswa-tkr.add') }}" method="POST">
+                <form action="{{ route('admin.siswa-rpl.add') }}" method="POST">
                 @csrf
                     <div class="row">
                         <div class="col-md-4">
@@ -54,7 +54,7 @@
                                 <label for="kelas">Kelas</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text input-group-text-sm" id="basic-addon3">TKR -</span>
+                                        <span class="input-group-text input-group-text-sm" id="basic-addon3">RPL -</span>
                                     </div>
                                     <input type="number" value="{{ old('kelas') }}" name="kelas" class="form-control form-control-sm" id="basic-url" aria-describedby="basic-addon3">
                                 </div>
@@ -92,7 +92,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title" style="float: left">List siswa TKR</h4>
+                <h4 class="card-title" style="float: left">List siswa RPL</h4>
             </div>
             <div class="card-body">
                 <div>
@@ -113,7 +113,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama</th>
-                                <th>Kelas</th>
+                                <th><div style="width:80px"></div>Kelas</th>
                                 <th>NISN</th>
                                 <th>Tanggal Lahir</th>
                                 <th>No. HP</th>
@@ -133,7 +133,7 @@
                                 <td>{{ $isi->lulusan }}</td>
                                 <td><div style="width: 90px"></div>
                                     <button style="float: left" class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#myModal{{ $isi->id }}"><i class="fa fa-edit"></i></button>
-                                    <form action="{{ route('siswa.delete', $isi->id) }}" method="post">
+                                    <form action="{{ route('admin.deleteRPL', $isi->id) }}" method="post">
                                         @csrf
                                         <button style="float: left" onclick="return confirm('Hapus data ?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                                     </form>

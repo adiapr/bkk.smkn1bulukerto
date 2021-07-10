@@ -37,7 +37,7 @@ class SiswaController extends Controller
     // show siswa tkr
     public function siswa_tkr(){
         $no = 0;
-        $siswa = Siswa::all()->sortByDesc('id');
+        $siswa = Siswa::where('kelas','like','TKR%')->orderBy('id','desc')->get();
         return view('admin.data.siswa-tkr', compact('no','siswa'));
     }
 
@@ -46,7 +46,7 @@ class SiswaController extends Controller
         $this->validate($request,[
             'nama'      => 'required|string',
             'nisn'      => 'required|unique:siswa',
-            'kelas'     => 'required|numeric',
+            'kelas'     => 'required|numeric|min:1|max:4',
             'lulus'     => 'required|numeric|max:9999|min:2010'
         ]);
         // panggil tabel siswa
@@ -57,8 +57,40 @@ class SiswaController extends Controller
         $siswa->tgl_lahir   = $request->tanggal;
         $siswa->lulusan     = $request->lulus;
         $siswa->telp        = $request->hp;
+        $siswa->level       = 1;
 
         $siswa->save();
         return redirect('/admin/siswa-TKR')->with('berhasil','Data siswa berhasil ditambahkan');
+    }
+
+    public function siswa_rpl(){
+        $no = 0;
+        $siswa = Siswa::where('kelas','like','RPL%')->orderBy('id','desc')->get();
+        return view('admin.data.siswa-rpl', compact('no','siswa'));
+    }
+
+    public function add_siswa_rpl(Request $request){
+        $this->validate($request,[
+            'nama'      => 'required|string',
+            'nisn'      => 'required|unique:siswa',
+            'kelas'     => 'required|numeric|min:1|max:4',
+            'lulus'     => 'required|numeric|max:9999|min:2010'
+        ]);
+        $siswa = new Siswa;
+        $siswa->nama        = $request->nama;
+        $siswa->nisn        = $request->nisn;
+        $siswa->kelas       = 'RPL-'.$request->kelas;
+        $siswa->tgl_lahir   = $request->tanggal;
+        $siswa->lulusan     = $request->lulus;
+        $siswa->telp        = $request->hp;
+        $siswa->level       = 1;
+        $siswa->save();
+        return redirect('admin/siswa-RPL')->with('berhasil','Data siswa berhasil ditambahkan');
+    }
+
+    public function deleteSiswaRPL($id){
+        $siswa = Siswa::find($id);
+        $siswa->delete();
+        return redirect('admin/siswa-RPL')->with('hapus','Data berhasil dihapus');
     }
 }
