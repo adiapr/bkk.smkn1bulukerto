@@ -526,35 +526,35 @@ viverra purus tristique.</p>
               <div class="title-box text-center">
                  <h2 class="title">Lowongan Kerja</h2>
               </div>
-         <!--Start Accordion-->
-         <div class="col-md-12">
+         <!--Loker-->
+         <div class="col-md-12" style="border-bottom:solid 1px grey;padding-top:5px;margin-bottom:20px">
             <div class="card mb-3">
-                <div class="row g-0">
-                  <div class="col-md-3">
-                    <img src="images/page-header.jpg" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-6">
-                    <div class="card-body">
-                      <h2>Card title</h2>
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                      <table>
-                          <tr width="100%">
-                              <td width="30%"><i class="fa fa-calendar"></i> 20 Juni 2020</td>
-                              <td width="30%"><i class="fa fa-graduation-cap"></i> TKR, RPL, AK</td>
-                              <td width="30%"><i class="fa fa-map-marker"></i> PT. Astra Internasional</td>
-                          </tr>
-                      </table><br>
+                <div class="card-body">
+                    <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="images/page-header.jpg" class="img-fluid rounded-start" alt="...">
                     </div>
-                  </div>
-                  <div class="col-md-3" style="text-align: right;v-align:mid">
-                      <a href="" class="btn btn-sm btn-primary" style="border-radius:3px;color:white"><i class="fa fa-th-list"></i> Detail</a>
-                      <a href="" class="btn btn-sm btn-success" style="border-radius:3px;color:white"><i class="fa fa-paper-plane"></i> Apply</a>
-                  </div>
+                    <div class="col-md-6">
+                        <h3><b>Card title</b></h3>
+                        <p class="card-text"><b>Posisi : </b>Operator Produksi</p>
+                        <table>
+                            <tr width="100%">
+                                <td width="30%"><i class="fa fa-calendar"></i> 20 Juni 2020</td>
+                                <td width="30%"><i class="fa fa-graduation-cap"></i> TKR, RPL, AK</td>
+                                <td width="30%"><i class="fa fa-map-marker"></i> PT. Astra Internasional</td>
+                            </tr>
+                        </table><br>
+                    </div>
+                    <div class="col-md-3" style="text-align: right;v-align:mid">
+                        <br><br>
+                        <a href="" class="btn btn-sm btn-primary" style="border-radius:3px;color:white"><i class="fa fa-th-list"></i> Detail</a>
+                        <a href="" class="btn btn-sm btn-success" style="border-radius:3px;color:white"><i class="fa fa-paper-plane"></i> Apply</a>
+                    </div>
+                    </div>
                 </div>
-              </div>
+            </div>
          </div>
-         <!--End Accordion-->
+         <!--End Loker-->
 
         </div> <!--/.row-->
     </div> <!--/.container-->

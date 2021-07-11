@@ -145,7 +145,7 @@
                                     ?>
                                     <div id="myModal{{ $isi->id }}" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
-                                            <form action="{{ route('admin.siswa.update', $isi->id) }}"  method="post">
+                                            <form action="{{ route('admin.updateRPL', $isi->id) }}"  method="post">
                                                 @csrf
                                                 <div class="modal-content">
                                                     <div class="modal-header">

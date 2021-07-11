@@ -41,4 +41,12 @@ Route::get('/', function () {
     Route::get('/admin/siswa-RPL', 'SiswaController@siswa_rpl')->name('admin.siswa-rpl')->middleware('auth');
     Route::post('/admin/siswa-rpl/add', 'SiswaController@add_siswa_rpl')->name('admin.siswa-rpl.add')->middleware('auth');
     Route::post('/admin/siswa-rpl/delete/{id}', 'SiswaController@deleteSiswaRPL')->name('admin.deleteRPL')->middleware('auth');
-    
+    Route::post('/admin/siswa-rpl/update/{id}', 'SiswaController@updateSiswaRPL')->name('admin.updateRPL')->middleware('auth');
+
+    Route::get('/admin/siswa-AK', 'SiswaController@siswa_ak')->name('admin.siswa-ak')->middleware('auth');
+    Route::post('/admin/siswa-ak/add', 'SiswaController@add_siswa_ak')->name('admin.siswa-ak.add')->middleware('auth');
+    Route::post('/admin/siswa-ak/delete/{id}', 'SiswaController@deleteSiswaAK')->name('admin.deleteAK')->middleware('auth');
+    Route::post('/admin/siswa-ak/update/{id}', 'SiswaController@updateSiswaAK')->name('admin.updateAK')->middleware('auth');
+
+    // HALAMAN LOKER
+    Route::get('admin/loker', 'SiswaController@listLoker')->name('admin.data.loker')->middleware('auth');

@@ -16,7 +16,7 @@ class halamanController extends Controller
     }
 
     public function index(){
-        return view('admin.tables');
+        return view('admin.dashboard');
     }
 
     public function indexSlider(){

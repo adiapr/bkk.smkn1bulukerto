@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// panggil model siswa
+// panggil model
 use App\Siswa;
+use App\Loker;
 
 class SiswaController extends Controller
 {
@@ -63,6 +64,49 @@ class SiswaController extends Controller
         return redirect('/admin/siswa-TKR')->with('berhasil','Data siswa berhasil ditambahkan');
     }
 
+    public function siswa_ak(){
+        $no = 0;
+        $siswa = Siswa::where('kelas','like','AK%')->orderBy('id','desc')->get();
+        return view('admin.data.siswa-akuntansi', compact('no','siswa'));
+    }
+
+    public function add_siswa_ak(Request $request){
+        $this->validate($request,[
+            'nama'      => 'required|string',
+            'nisn'      => 'required|unique:siswa',
+            'kelas'     => 'required|numeric|min:1|max:4',
+            'lulus'     => 'required|numeric|max:9999|min:2010'
+        ]);
+        $siswa = new Siswa;
+        $siswa->nama        = $request->nama;
+        $siswa->nisn        = $request->nisn;
+        $siswa->kelas       = 'AK-'.$request->kelas;
+        $siswa->tgl_lahir   = $request->tanggal;
+        $siswa->lulusan     = $request->lulus;
+        $siswa->telp        = $request->hp;
+        $siswa->level       = 1;
+        $siswa->save();
+        return redirect('admin/siswa-AK')->with('berhasil','Data siswa berhasil ditambahkan');
+    }
+
+    public function deleteSiswaAK($id){
+        $siswa = Siswa::find($id);
+        $siswa->delete();
+        return redirect('admin/siswa-AK')->with('hapus','Data berhasil dihapus');
+    }
+
+    public function updateSiswaAK(Request $request, $id){
+        $siswa = Siswa::find($id);
+        $siswa->nama        = $request->nama;
+        $siswa->nisn        = $request->nisn;
+        $siswa->kelas       = $request->kelas;
+        $siswa->tgl_lahir   = $request->tanggal;
+        $siswa->lulusan     = $request->lulus;
+        $siswa->telp        = $request->hp;
+        $siswa->update();
+        return redirect('admin/siswa-AK')->with('update', 'Data berhasil diperbaharui');
+    }
+
     public function siswa_rpl(){
         $no = 0;
         $siswa = Siswa::where('kelas','like','RPL%')->orderBy('id','desc')->get();
@@ -92,5 +136,24 @@ class SiswaController extends Controller
         $siswa = Siswa::find($id);
         $siswa->delete();
         return redirect('admin/siswa-RPL')->with('hapus','Data berhasil dihapus');
+    }
+
+    public function updateSiswaRPL(Request $request, $id){
+        $siswa = Siswa::find($id);
+        $siswa->nama        = $request->nama;
+        $siswa->nisn        = $request->nisn;
+        $siswa->kelas       = $request->kelas;
+        $siswa->tgl_lahir   = $request->tanggal;
+        $siswa->lulusan     = $request->lulus;
+        $siswa->telp        = $request->hp;
+        $siswa->update();
+        return redirect('admin/siswa-RPL')->with('update', 'Data berhasil diperbaharui');
+    }
+
+    // LOKER
+    public function listLoker(){
+        $no = 0;
+        $loker = Loker::all();
+        return view('admin.data.loker',compact('no','loker'));
     }
 }

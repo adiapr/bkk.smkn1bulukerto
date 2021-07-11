@@ -2,46 +2,9 @@
 
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
-            <div class="user">
-                <div class="avatar-sm float-left mr-2">
-                    <img src="{{ asset('img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
-                </div>
-                <div class="info">
-                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                        <span>
-                            {{-- memunculkan data user --}}
-                            {{ Auth::user()->name }}
-                            <span class="user-level">{{ Auth::user()->level}}</span>
-                            {{-- ------------------------------ --}}
-                            <span class="caret"></span>
-                        </span>
-                    </a>
-                    <div class="clearfix"></div>
-
-                    <div class="collapse in" id="collapseExample">
-                        <ul class="nav">
-                            <li>
-                                <a href="#profile">
-                                    <span class="link-collapse">My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#edit">
-                                    <span class="link-collapse">Edit Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#settings">
-                                    <span class="link-collapse">Settings</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <ul class="nav nav-primary">
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="collapsed" aria-expanded="false">
+                    <a href="{{ route('admin') }}" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -50,9 +13,9 @@
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Components</h4>
+                    <h4 class="text-section">Manajemen</h4>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
                         <p>Base</p>
@@ -112,8 +75,8 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                     <a data-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-th-list"></i>
                         <p>Sidebar Layouts</p>
@@ -148,8 +111,8 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                     <a data-toggle="collapse" href="#forms">
                         <i class="fas fa-pen-square"></i>
                         <p>Forms</p>
@@ -164,7 +127,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#tables">
                         <i class="fas fa-users"></i>
@@ -184,8 +147,29 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="{{ route('admin.siswa-ak') }}">
                                     <span class="sub-item">Akuntansi</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#forms">
+                        <i class="fas fa-briefcase"></i>
+                        <p>Lowongan Pekerjaan</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="forms">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('admin.siswa-tkr') }}">
+                                    <span class="sub-item">Data Lowongan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.siswa-rpl') }}">
+                                    <span class="sub-item">Pelamar</span>
                                 </a>
                             </li>
                         </ul>
@@ -216,7 +200,7 @@
                 </li>
                 @endif
                 {{-- ----------------------------------------------- --}}
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a data-toggle="collapse" href="#charts">
                         <i class="far fa-chart-bar"></i>
                         <p>Charts</p>
@@ -236,14 +220,14 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                     <a href="../widgets.html">
                         <i class="fas fa-desktop"></i>
                         <p>Widgets</p>
                         <span class="badge badge-success">4</span>
                     </a>
-                </li>
+                </li> --}}
                 @if (Auth::check() && Auth::user()->level == 'admin')
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
