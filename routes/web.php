@@ -50,3 +50,6 @@ Route::get('/', function () {
 
     // HALAMAN LOKER
     Route::get('admin/loker', 'SiswaController@listLoker')->name('admin.data.loker')->middleware('auth');
+    Route::post('admin/loker/add', 'SiswaController@addLoker')->name('admin.loker.add')->middleware('auth');
+    Route::post('admin/loker/delete/{id}', 'SiswaController@deleteLoker')->name('admin.loker.delete')->middleware('auth');
+    Route::post('admin/loker/update/{id}','SiswaController@updateLoker')->name('admin.loker.update')->middleware('auth');

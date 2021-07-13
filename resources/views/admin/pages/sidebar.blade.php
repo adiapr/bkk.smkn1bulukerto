@@ -163,7 +163,7 @@
                     <div class="collapse" id="forms">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{ route('admin.siswa-tkr') }}">
+                                <a href="{{ route('admin.data.loker') }}">
                                     <span class="sub-item">Data Lowongan</span>
                                 </a>
                             </li>

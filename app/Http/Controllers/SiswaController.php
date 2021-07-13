@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // panggil model
 use App\Siswa;
 use App\Loker;
+use File;
 
 class SiswaController extends Controller
 {
@@ -153,7 +154,67 @@ class SiswaController extends Controller
     // LOKER
     public function listLoker(){
         $no = 0;
-        $loker = Loker::all();
+        $loker = Loker::orderBy('id','desc')->get();
         return view('admin.data.loker',compact('no','loker'));
+    }
+
+    public function addLoker(Request $request){
+        $loker = new Loker;
+        $loker->perusahaan      = $request->perusahaan;
+        $loker->posisi          = $request->posisi;
+        $loker->tes             = $request->tanggal;
+        $loker->jurusan         = $request->jurusan;
+        $loker->lokasi          = $request->lokasi;
+        $loker->keterangan      = $request->deskripsi;
+        // inisialisasi save gambar
+        $gambar     = $request->logo;
+        $namafile   = time().'.'.$gambar->getClientOriginalExtension();
+        $gambar->move('images/company-logo', $namafile);
+        // inisialisasi menyimpan
+        $loker->logo            = $namafile;
+        // simpan
+        $loker->save();
+        return redirect('admin/loker    ')->with('berhasil','Lowongan berhasil dibagikan');
+    }
+
+    public function deleteLoker($id){
+        $loker = Loker::find($id);
+        $namafile = $loker->logo;
+        File::delete('images/company-logo/'.$namafile);
+        $loker->delete();
+
+        return redirect('admin/loker')
+        ->with('hapus','Data loker berhasil dihapus');
+    }
+
+    public function updateLoker(Request $request, $id){
+        $loker = Loker::find($id);
+        // jika gambar diubah
+        if ($request->has('logo')){
+            $loker->perusahaan      = $request->perusahaan;
+            $loker->posisi          = $request->posisi;
+            $loker->tes             = $request->tanggal;
+            $loker->lokasi          = $request->lokasi;
+            $loker->jurusan         = $request->jurusan;
+            $loker->keterangan      = $request->deskripsi;
+            // olah gambar
+            $logo   = $request->logo;
+            $namafile = time().'.'.$logo->getClientOriginalExtension();
+            $logo->move('images/company-logo/', $namafile);
+            // balik
+            $loker->logo            = $namafile;
+        }else{
+            // jika gambar tidak diubah
+            $loker->perusahaan      = $request->perusahaan;
+            $loker->posisi          = $request->posisi;
+            $loker->tes             = $request->tanggal;
+            $loker->lokasi          = $request->lokasi;
+            $loker->jurusan         = $request->jurusan;
+            $loker->keterangan      = $request->deskripsi;
+        }
+        $loker->update();
+
+        return redirect('/admin/loker')
+        ->with('berhasil','Data loker telah diperbaharui');
     }
 }

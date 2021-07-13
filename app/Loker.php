@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Loker extends Model
 {
-    protected $table = 'model';
+    protected $table = 'loker';
 
-    protected $dates = ['tes'];
+    // protected $dates = ['tes'];
 }
