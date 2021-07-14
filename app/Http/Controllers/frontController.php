@@ -13,4 +13,8 @@ class frontController extends Controller
         $loker = Loker::all();
         return view('index', compact('slider','loker'));
     }
+
+    public function angket(){
+        return view('angket');
+    }
 }

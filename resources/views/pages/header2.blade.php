@@ -1,4 +1,4 @@
-<header id="header">
+<header id="header" style="background: #00008B">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -19,11 +19,11 @@
                 <div id="main-menu" class="collapse scroll navbar-right">
                     <ul class="nav">
 
-                        <li class="active"> <a href="#home"  style="text-transform: Capitalize">Home</a> </li>
-                        <li> <a href="#clients" style="text-transform: Capitalize">Kerjasama</a> </li>
-                        <li> <a href="#why-choose" style="text-transform: Capitalize">Lowongan</a> </li>
-                        <li> <a href="#berita" style="text-transform: Capitalize">Berita</a> </li>
-                        <li> <a href="#about" style="text-transform: Capitalize">Tentang</a> </li>
+                        <li class="active"> <a href="{{ route('index') }}#home"  style="text-transform: Capitalize">Home</a> </li>
+                        <li> <a href="{{ route('index') }}#clients" style="text-transform: Capitalize">Kerjasama</a> </li>
+                        <li> <a href="{{ route('index') }}#why-choose" style="text-transform: Capitalize">Lowongan</a> </li>
+                        <li> <a href="{{ route('index') }}#berita" style="text-transform: Capitalize">Berita</a> </li>
+                        <li> <a href="{{ route('index') }}#about" style="text-transform: Capitalize">Tentang</a> </li>
                         <li>
                             <a href="{{ route('angket') }}" style="color:yellow">Angket</a>
                         </li>
