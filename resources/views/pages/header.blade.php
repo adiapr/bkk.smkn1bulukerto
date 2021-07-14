@@ -19,11 +19,11 @@
                 <div id="main-menu" class="collapse scroll navbar-right">
                     <ul class="nav">
 
-                        <li class="active"> <a href="#home">Home</a> </li>
-                        <li> <a href="#clients">Kerjasama</a> </li>
-                        <li> <a href="#why-choose">Lowongan</a> </li>
-                        <li> <a href="#berita">Berita</a> </li>
-                        <li> <a href="#about">Tentang</a> </li>
+                        <li class="active"> <a href="#home"  style="text-transform: Capitalize">Home</a> </li>
+                        <li> <a href="#clients" style="text-transform: Capitalize">Kerjasama</a> </li>
+                        <li> <a href="#why-choose" style="text-transform: Capitalize">Lowongan</a> </li>
+                        <li> <a href="#berita" style="text-transform: Capitalize">Berita</a> </li>
+                        <li> <a href="#about" style="text-transform: Capitalize">Tentang</a> </li>
                         <li><a href="login" style="color:yellow">Login</a></li>
 
                     </ul>

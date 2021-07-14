@@ -14,10 +14,11 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title" style="float: left">Data Lowongan</h4>
+                
                 {{-- show modal --}}
-                <button class="btn btn-primary btn-sm" style="float: right" data-toggle="modal" data-target="#myModal">Tambah Loker</button>
+                <button class="btn btn-primary btn-sm" style="float: right" data-toggle="modal" data-target="#myModal11">Tambah Loker</button>
                 {{-- content modal --}}
-                <div id="myModal" class="modal fade" role="dialog">
+                <div id="myModal11" class="modal fade" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <form action="{{ route('admin.loker.add') }}" enctype="multipart/form-data" method="post">
                             @csrf
@@ -59,7 +60,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="logo">Logo perusahaan</label>
+                                                <label for="logo">Logo ( 400x125 )</label>
                                                 <input type="file" class="form-control form-control-sm" name="logo" placeholder="Masukkan lokasi" required>
                                             </div>
                                         </div>
@@ -155,7 +156,7 @@
                                 <td><img src="{{asset('images/company-logo/'.$isi->logo) }}" height="80"></td>
                                 <td> <div style="width: 80px;"></div>
                                     {{-- membuat edit --}}
-                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModalll{{ $isi->id }}"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-sm btn-primary" style="float: left;margin-right:3px" data-toggle="modal" data-target="#myModalll{{ $isi->id }}"><i class="fa fa-pencil"></i></button>
                                     <div id="myModalll{{ $isi->id }}" class="modal fade" role="dialog">
                                         <div class="modal-dialog modal-lg">
                                             <form action="{{ route('admin.loker.update', $isi->id) }}" enctype="multipart/form-data" method="post">
@@ -222,7 +223,7 @@
                                     {{-- HAPUS LOKER --}}
                                     <form action="{{ route('admin.loker.delete', $isi->id) }}" method="post">
                                     @csrf
-                                    <button onClick="return confirm('Hapus Loker ?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                    <button style="float: left" onClick="return confirm('Hapus Loker ?')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
 
                                 </td>

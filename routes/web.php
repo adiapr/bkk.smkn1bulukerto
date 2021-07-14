@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-    Route::get('/', 'frontController@slider')->name('index');
+    Route::get('/', 'frontController@view')->name('index');
 
     Route::get('/admin', 'halamanController@index')->name('admin')->middleware('auth');
     Route::get('/admin/slider', 'halamanController@indexSlider')->name('admin.slider')->middleware('auth');

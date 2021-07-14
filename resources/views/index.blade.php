@@ -10,15 +10,15 @@
   <head>
     @include('pages.headset')
   </head>
-  <body  data-spy="scroll" data-target="#main-menu">
+  <body  data-spy="scroll" data-target="#main-menu" style="font-family: arial">
 
 
   <!--Start Page loader -->
-  <div id="pageloader">
+  {{-- <div id="pageloader">
         <div class="loader">
           <img src="images/progress.gif" alt='loader' />
         </div>
-   </div>
+   </div> --}}
    <!--End Page loader -->
 
 
@@ -38,7 +38,7 @@
                         <div class="slider-text-wrapper">
                             <div class="container">
                                 <div class="big">{{ $slide->judul }} </div>
-                                <div class="small">{{ $slide->tagline }}</div>
+                                <div class="small" style="text-transform: Capitalize">{{ $slide->tagline }}</div>
                             </div>
                         </div>
                         <img src="images/slider/{{ $slide->gambar }}" alt="{{ $slide->nama }}">
@@ -527,33 +527,82 @@ viverra purus tristique.</p>
                  <h2 class="title">Lowongan Kerja</h2>
               </div>
          <!--Loker-->
-         <div class="col-md-12" style="border-bottom:solid 1px grey;padding-top:5px;margin-bottom:20px">
+         @foreach ($loker as $dataloker)
+         <div class="col-md-12" 
+         style="
+         background: white; 
+         border:solid 1px #eeecec; 
+         border-radius:3px;
+         margin-bottom:10px;
+         padding-top:5px;
+         line-height:20px">
             <div class="card mb-3">
                 <div class="card-body">
                     <div class="row g-0">
                     <div class="col-md-3">
-                        <img src="images/page-header.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="images/company-logo/{{ $dataloker->logo }}" class="img-fluid rounded-start" style="height: 100px">
                     </div>
                     <div class="col-md-6">
-                        <h3><b>Card title</b></h3>
-                        <p class="card-text"><b>Posisi : </b>Operator Produksi</p>
+                        <h3><b>{{ $dataloker->perusahaan }}</b></h3>
+                        <p class="card-text"><b>Posisi : </b>{{ $dataloker->posisi }}</p>
                         <table>
                             <tr width="100%">
-                                <td width="30%"><i class="fa fa-calendar"></i> 20 Juni 2020</td>
-                                <td width="30%"><i class="fa fa-graduation-cap"></i> TKR, RPL, AK</td>
-                                <td width="30%"><i class="fa fa-map-marker"></i> PT. Astra Internasional</td>
+                                <td width="30%"><i class="fa fa-calendar"></i> {{ $dataloker->tes }}</td>
+                                <td width="30%"><i class="fa fa-graduation-cap"></i> {{ $dataloker->jurusan }}</td>
+                                <td width="30%"><i class="fa fa-map-marker"></i> {{ $dataloker->lokasi }}</td>
                             </tr>
                         </table><br>
                     </div>
                     <div class="col-md-3" style="text-align: right;v-align:mid">
                         <br><br>
-                        <a href="" class="btn btn-sm btn-primary" style="border-radius:3px;color:white"><i class="fa fa-th-list"></i> Detail</a>
+                        <a href="" class="btn btn-primary btn-sm" style="border-radius:3px;color:white" data-toggle="modal" data-target="#myModall{{ $dataloker->id }}">
+                            <i class="fa fa-th-list"></i> Detail
+                            </a>
+                            <div id="myModall{{ $dataloker->id }}" class="modal fade" role="dialog">
+                                <div style="text-align: left" class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <br><br>
+                                            <font size="+3"><b>{{ $dataloker->perusahaan }}</b></font><br>
+                                            <font size="+0" style="color: #999999">{{ $dataloker->posisi }}</font>
+                                            <hr>
+                                            <table border="0" style="width:100%">
+                                                <tr >
+                                                    <td>
+                                                        <i class="fa fa-calendar"></i> &nbsp; {{ $dataloker->tes }}<br>
+                                                        <i class="fa fa-university"></i> &nbsp; {{ $dataloker->lokasi }}<br>
+                                                        <i class="fa fa-graduation-cap"></i> &nbsp; {{ $dataloker->jurusan }}<br>
+                                                    </td>
+                                                    <td align="right">
+                                                        <img src="{{asset('images/company-logo/'.$dataloker->logo) }}" height="80">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    
+                                                </div>
+                                                <div class="col-6" style="text-align: right">
+                                                    
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <b>Deskripsi :</b><br>
+                                            {!! $dataloker->keterangan !!}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-default btn-sm" data-dismiss="modal">Kembali</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <a href="" class="btn btn-sm btn-success" style="border-radius:3px;color:white"><i class="fa fa-paper-plane"></i> Apply</a>
                     </div>
                     </div>
                 </div>
             </div>
          </div>
+         @endforeach
          <!--End Loker-->
 
         </div> <!--/.row-->
@@ -692,7 +741,7 @@ viverra purus tristique.</p>
            <div class="row">
 
                    <div class="title-box text-center white">
-                     <h2 class="title">What clients say.</h2>
+                     <h2 class="title text-center" style="text-align: center">What clients say.</h2>
                   </div>
 
 
@@ -767,6 +816,14 @@ viverra purus tristique.</p>
     <script type="text/javascript" src="../frontstyle/js/jquery.parallax-1.1.3.js"></script>
     <script type="text/javascript" src="../frontstyle/js/jquery.mixitup.min.js"></script>
     <script type="text/javascript" src="../frontstyle/js/custom.js"></script>
+
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script> --}}
+
+{{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script> --}}
+
 
  </body>
 </html>

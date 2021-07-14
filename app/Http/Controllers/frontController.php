@@ -4,17 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Slider;
+use App\Loker;
 
 class frontController extends Controller
 {
-
-    // jika index ingin dilindungi auth
-    // public function __construct(){
-    //     $this->middleware('auth');
-    // }
-
-    public function slider(){
+    public function view(){
         $slider = Slider::all();
-        return view('index', compact('slider'));
+        $loker = Loker::all();
+        return view('index', compact('slider','loker'));
     }
 }
